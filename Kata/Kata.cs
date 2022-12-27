@@ -4,10 +4,9 @@ using System;
 
 namespace Kata;
 
-public class LoveDetector
-{
-    public static bool lovefunc(int flower1, int flower2)
+public static class Kata {
+    public static IEnumerable<string> FriendOrFoe (string[] names)
     {
-        return (flower1 % 2 == flower2 % 2) ? false : true;
+        return names.Where(x => x.Length < 5).ToList();
     }
 }

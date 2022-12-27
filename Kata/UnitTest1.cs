@@ -8,26 +8,9 @@ using System;
 public class Tests
 {
     [Test]
-    public void Test1()
-    {
-        Assert.AreEqual(true, LoveDetector.lovefunc(1,4));
-    }
-
-    [Test]
-    public void Test2()
-    {
-        Assert.AreEqual(false, LoveDetector.lovefunc(2,2));
-    }
-
-    [Test]
-    public void Test3()
-    {
-        Assert.AreEqual(true, LoveDetector.lovefunc(0,1));
-    }
-
-    [Test]
-    public void Test4()
-    {
-        Assert.AreEqual(false, LoveDetector.lovefunc(0,0));
+    public void Test1 () {
+        string[] expected = { "Ryan", "Mark" };
+        string[] names = { "Ryan", "Kieran", "Mark", "Jimmy" };
+        CollectionAssert.AreEqual (expected, Kata.FriendOrFoe (names));
     }
 }

@@ -4,12 +4,10 @@ using System;
 
 namespace Kata;
 
-public class Kata
+public class LoveDetector
 {
-    public static string Disemvowel(string str)
+    public static bool lovefunc(int flower1, int flower2)
     {
-        string vowels = "aeiouAEIOU";
-        str = new string (str.Where(x => !vowels.Contains(x)).ToArray());
-        return str;
+        return (flower1 % 2 == flower2 % 2) ? false : true;
     }
 }

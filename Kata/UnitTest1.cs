@@ -8,20 +8,26 @@ using System;
 public class Tests
 {
     [Test]
-    public void ShouldRemoveAllVowels()
+    public void Test1()
     {
-        Assert.AreEqual("Ths wbst s fr lsrs LL!", Kata.Disemvowel("This website is for losers LOL!"));
+        Assert.AreEqual(true, LoveDetector.lovefunc(1,4));
     }
-    
+
     [Test]
-    public void MultilineString()
+    public void Test2()
     {
-        Assert.AreEqual("N ffns bt,\nYr wrtng s mng th wrst 'v vr rd", Kata.Disemvowel("No offense but,\nYour writing is among the worst I've ever read"));
+        Assert.AreEqual(false, LoveDetector.lovefunc(2,2));
     }
-  
+
     [Test]
-    public void OneMoreForGoodMeasure()
+    public void Test3()
     {
-        Assert.AreEqual("Wht r y,  cmmnst?", Kata.Disemvowel("What are you, a communist?"));
+        Assert.AreEqual(true, LoveDetector.lovefunc(0,1));
+    }
+
+    [Test]
+    public void Test4()
+    {
+        Assert.AreEqual(false, LoveDetector.lovefunc(0,0));
     }
 }

@@ -5,13 +5,19 @@ using System;
 
 
 [TestFixture]
-public class SolutionTests
+public class Tests
 {
-    [Test]
-    public void BasicTests()
+    private static IEnumerable<TestCaseData> sampleTestCases
     {
-        Assert.AreEqual(3, Kata.FindShort("bitcoin take over the world maybe who knows perhaps"));
-        Assert.AreEqual(3, Kata.FindShort("turns out random test cases are easier than writing out basic ones"));      
-        Assert.AreEqual(2, Kata.FindShort("Let's travel abroad shall we"));
+        get
+        {
+            yield return new TestCaseData(new int[] {1,2,2}).Returns(9);
+            yield return new TestCaseData(new int[] {1,2}).Returns(5);
+            yield return new TestCaseData(new int[] {5,3,4}).Returns(50);
+            yield return new TestCaseData(new int[] {}).Returns(0);
+        }
     }
+
+    [Test, TestCaseSource("sampleTestCases"), Description("Sample Tests")]
+    public int SampleTest(int[] n) => Kata.SquareSum(n);
 }

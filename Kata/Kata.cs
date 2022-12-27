@@ -6,12 +6,8 @@ namespace Kata;
 
 public class Kata
 {
-    public static int FindShort(string s)
+    public static int SquareSum(int[] numbers)
     {
-        var result = s.Split(" ").ToList();
-        var arr = result.OrderBy(x => x.Length).ToList();
-        return arr[0].Length;
-        
-        // return s.Split(' ').Min(x => x.Length);
+        return numbers.Select(x => x * x).Sum();
     }
 }

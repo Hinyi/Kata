@@ -5,13 +5,11 @@ using System;
 
 
 [TestFixture]
-public class SolutionTest
+public class SolutionTests
 {
     [Test]
-    public static void test1() 
+    public void IsTriangle_ValidPostiveNumbers_ReturnsTrue()
     {
-        Console.WriteLine("Testing PrinterError");
-        string s="aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz";
-        Assert.AreEqual("3/56", Printer.PrinterError(s));
+        Assert.IsTrue(Triangle.IsTriangle(5, 7, 10));
     }
 }

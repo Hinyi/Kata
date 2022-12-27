@@ -4,14 +4,21 @@ using System;
 
 namespace Kata;
 
-public class Printer 
+public class Triangle
 {
-    public static string PrinterError(String s)
+    public static bool IsTriangle(int a, int b, int c)
     {
-        var arr_count = s.Length;
-        var arr = string.Concat(s).Where(x => x > 'm').Count();
-        return $"{arr}/{arr_count}";
-        
-        // return s.Where(c => c > 'm').Count() + "/" + s.Length;
+        int[] arr = new[] { a, b, c };
+        if (a > 0 || b > 0 || c > 0)
+        {
+            foreach (var i in arr)
+            {
+                if (!(arr.Sum() - 2 * i > 0))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

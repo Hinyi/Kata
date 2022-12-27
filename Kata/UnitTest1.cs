@@ -8,8 +8,12 @@ using System;
 public class SolutionTest
 {
     [Test]
-    public void ShouldReturnHelloWorld()
+    public void Test()
     {
-        Assert.AreEqual("hello world!", Kata.greet());
+        Assert.AreEqual(25, Paper.Paperwork(5,5));
+        Assert.AreEqual(0, Paper.Paperwork(5,-5));
+        Assert.AreEqual(0, Paper.Paperwork(-5,-5));
+        Assert.AreEqual(0, Paper.Paperwork(-5,5));
+        Assert.AreEqual(0, Paper.Paperwork(5,0));
     }
 }

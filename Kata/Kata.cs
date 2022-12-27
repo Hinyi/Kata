@@ -4,10 +4,17 @@ using System;
 
 namespace Kata;
 
-public static class Kata
+public static class Paper
 {      
-    public static string greet()
+    public static int Paperwork(int n, int m)
     {
-        return "hello world!";
+        if (n < 0 || m < 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return n * m;
+        }
     }
 }

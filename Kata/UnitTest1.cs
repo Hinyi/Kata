@@ -7,28 +7,21 @@ using System;
 [TestFixture]
 public class Tests
 {
-    private static object[] sampleTestCases = new object[]
+    [Test]
+    public void ShouldRemoveAllVowels()
     {
-        // new object[] {"samurai", "ai", true},
-        // new object[] {"sumo", "omo", false},
-        // new object[] {"ninja", "ja", true},
-        // new object[] {"sensei", "i", true},
-        // new object[] {"samurai", "ra", false},
-        // new object[] {"abc", "abcd", false},
-        // new object[] {"abc", "abc", true},
-        // new object[] {"abcabc", "bc", true},
-        // new object[] {"ails", "fails", false},
-        // new object[] {"fails", "ails", true},
-        // new object[] {"this", "fails", false},
-        new object[] {"abc", "", true},
-        new object[] {":-)", ":-(", false},
-        new object[] {"!@#$%^&*() :-)", ":-)", true},
-        new object[] {"abc\n", "abc", false},
-    };
+        Assert.AreEqual("Ths wbst s fr lsrs LL!", Kata.Disemvowel("This website is for losers LOL!"));
+    }
+    
+    [Test]
+    public void MultilineString()
+    {
+        Assert.AreEqual("N ffns bt,\nYr wrtng s mng th wrst 'v vr rd", Kata.Disemvowel("No offense but,\nYour writing is among the worst I've ever read"));
+    }
   
-    [Test, TestCaseSource("sampleTestCases")]
-    public void SampleTest(string str, string ending, bool expected)
+    [Test]
+    public void OneMoreForGoodMeasure()
     {
-        Assert.AreEqual(expected, Kata.Solution(str, ending));
+        Assert.AreEqual("Wht r y,  cmmnst?", Kata.Disemvowel("What are you, a communist?"));
     }
 }

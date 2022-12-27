@@ -4,21 +4,14 @@ using System;
 
 namespace Kata;
 
-public class Triangle
+public class Kata
 {
-    public static bool IsTriangle(int a, int b, int c)
+    public static int FindShort(string s)
     {
-        int[] arr = new[] { a, b, c };
-        if (a > 0 || b > 0 || c > 0)
-        {
-            foreach (var i in arr)
-            {
-                if (!(arr.Sum() - 2 * i > 0))
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
+        var result = s.Split(" ").ToList();
+        var arr = result.OrderBy(x => x.Length).ToList();
+        return arr[0].Length;
+        
+        // return s.Split(' ').Min(x => x.Length);
     }
 }

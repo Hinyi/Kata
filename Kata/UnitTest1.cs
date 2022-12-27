@@ -8,8 +8,10 @@ using System;
 public class SolutionTests
 {
     [Test]
-    public void IsTriangle_ValidPostiveNumbers_ReturnsTrue()
+    public void BasicTests()
     {
-        Assert.IsTrue(Triangle.IsTriangle(5, 7, 10));
+        Assert.AreEqual(3, Kata.FindShort("bitcoin take over the world maybe who knows perhaps"));
+        Assert.AreEqual(3, Kata.FindShort("turns out random test cases are easier than writing out basic ones"));      
+        Assert.AreEqual(2, Kata.FindShort("Let's travel abroad shall we"));
     }
 }

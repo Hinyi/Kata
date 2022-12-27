@@ -7,17 +7,28 @@ using System;
 [TestFixture]
 public class Tests
 {
-    private static IEnumerable<TestCaseData> sampleTestCases
+    private static object[] sampleTestCases = new object[]
     {
-        get
-        {
-            yield return new TestCaseData(new int[] {1,2,2}).Returns(9);
-            yield return new TestCaseData(new int[] {1,2}).Returns(5);
-            yield return new TestCaseData(new int[] {5,3,4}).Returns(50);
-            yield return new TestCaseData(new int[] {}).Returns(0);
-        }
+        // new object[] {"samurai", "ai", true},
+        // new object[] {"sumo", "omo", false},
+        // new object[] {"ninja", "ja", true},
+        // new object[] {"sensei", "i", true},
+        // new object[] {"samurai", "ra", false},
+        // new object[] {"abc", "abcd", false},
+        // new object[] {"abc", "abc", true},
+        // new object[] {"abcabc", "bc", true},
+        // new object[] {"ails", "fails", false},
+        // new object[] {"fails", "ails", true},
+        // new object[] {"this", "fails", false},
+        new object[] {"abc", "", true},
+        new object[] {":-)", ":-(", false},
+        new object[] {"!@#$%^&*() :-)", ":-)", true},
+        new object[] {"abc\n", "abc", false},
+    };
+  
+    [Test, TestCaseSource("sampleTestCases")]
+    public void SampleTest(string str, string ending, bool expected)
+    {
+        Assert.AreEqual(expected, Kata.Solution(str, ending));
     }
-
-    [Test, TestCaseSource("sampleTestCases"), Description("Sample Tests")]
-    public int SampleTest(int[] n) => Kata.SquareSum(n);
 }

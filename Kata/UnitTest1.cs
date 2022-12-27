@@ -8,12 +8,10 @@ using System;
 public class SolutionTest
 {
     [Test]
-    public void Test()
+    public static void test1() 
     {
-        Assert.AreEqual(25, Paper.Paperwork(5,5));
-        Assert.AreEqual(0, Paper.Paperwork(5,-5));
-        Assert.AreEqual(0, Paper.Paperwork(-5,-5));
-        Assert.AreEqual(0, Paper.Paperwork(-5,5));
-        Assert.AreEqual(0, Paper.Paperwork(5,0));
+        Console.WriteLine("Testing PrinterError");
+        string s="aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz";
+        Assert.AreEqual("3/56", Printer.PrinterError(s));
     }
 }

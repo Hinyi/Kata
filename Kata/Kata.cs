@@ -4,10 +4,14 @@ using System;
 
 namespace Kata;
 
-public static class Paper
-{      
-    public static int Paperwork(int n, int m)
+public class Printer 
+{
+    public static string PrinterError(String s)
     {
-        return (n < 0 || m < 0) ? 0 : m * n;
+        var arr_count = s.Length;
+        var arr = string.Concat(s).Where(x => x > 'm').Count();
+        return $"{arr}/{arr_count}";
+        
+        // return s.Where(c => c > 'm').Count() + "/" + s.Length;
     }
 }

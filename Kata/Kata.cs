@@ -5,8 +5,13 @@ using System;
 namespace Kata;
 
 public static class Kata {
-    public static IEnumerable<string> FriendOrFoe (string[] names)
+    public static int Number(List<int[]> peopleListInOut)
     {
-        return names.Where(x => x.Length < 5).ToList();
+        var result = 0;
+        foreach (var i in peopleListInOut)
+        {
+            result += i[0] - i[1];
+        }
+        return result;
     }
 }

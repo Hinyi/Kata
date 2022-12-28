@@ -4,24 +4,16 @@ using System.Linq;
 
 namespace Kata;
 
-public static class Kata {
-    public static string GetMiddle(string s)
+public class NthSeries {
+	
+    public static string seriesSum (int n)
     {
-        string result = string.Empty;
-        var size = s.Length;
-        var a = s.ToArray();
-        if (size % 2 == 0)
+        double result = 0;
+        for (int i = 0; i < n; i++)
         {
-            result = a[size/2-1].ToString() + a[size/2].ToString();
+            result = result + (1 / (1.0 + i * 3.0));
         }
-        else
-        {
-            result = a[size/2].ToString();
-        }
-        return result;
-        
-        // return string.IsNullOrEmpty(s)
-        //     ? s
-        //     : s.Substring((s.Length - 1) / 2, 2 - s.Length % 2);
+
+        return result.ToString("F").Replace(",",".");
     }
 }

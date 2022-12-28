@@ -1,0 +1,15 @@
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.csproj.AssemblyReference.cache
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.GeneratedMSBuildEditorConfig.editorconfig
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.AssemblyInfoInputs.cache
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.AssemblyInfo.cs
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.csproj.CoreCompileInputs.cache
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\bin\Debug\net7.0\Kata_console.exe
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\bin\Debug\net7.0\Kata_console.deps.json
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\bin\Debug\net7.0\Kata_console.runtimeconfig.json
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\bin\Debug\net7.0\Kata_console.dll
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\bin\Debug\net7.0\Kata_console.pdb
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.dll
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\refint\Kata_console.dll
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.pdb
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\Kata_console.genruntimeconfig.cache
+D:\Smieci\ProjektyCsharp\Kata\Kata_console\obj\Debug\net7.0\ref\Kata_console.dll

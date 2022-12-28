@@ -8,20 +8,11 @@ using System;
 public class Tests
 {
     [Test]
-    public static void EvilShouldWin()
+    public void SampleTest()
     {
-        Assert.AreEqual("Battle Result: Evil eradicates all trace of Good", Kata.GoodVsEvil("1 1 1 1 1 1", "1 1 1 1 1 1 1"));
-    }
-  
-    [Test]
-    public static void GoodShouldTriumph()
-    {
-        Assert.AreEqual("Battle Result: Good triumphs over Evil", Kata.GoodVsEvil("0 0 0 0 0 10", "0 1 1 1 1 0 0"));
-    }
-  
-    [Test]
-    public static void ShouldBeATie()
-    {
-        Assert.AreEqual("Battle Result: No victor on this battle field", Kata.GoodVsEvil("1 0 0 0 0 0", "1 0 0 0 0 0 0"));
+        Assert.AreEqual(true, Kata.IsValidWalk(new string[] {"n","s","n","s","n","s","n","s","n","s"}), "should return true");
+        Assert.AreEqual(false, Kata.IsValidWalk(new string[] {"w","e","w","e","w","e","w","e","w","e","w","e"}), "should return false");
+        Assert.AreEqual(false, Kata.IsValidWalk(new string[] {"w"}), "should return false");
+        Assert.AreEqual(false, Kata.IsValidWalk(new string[] {"n","n","n","s","n","s","n","s","n","s"}), "should return false");
     }
 }

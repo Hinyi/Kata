@@ -5,14 +5,27 @@ using System;
 
 
 [TestFixture]
-public class Tests
+public class Testsa
 {
-    [Test]
-    public void SampleTest()
+    private Kata variabonacci;
+  
+    [SetUp]
+    public void SetUp() 
     {
-        Assert.AreEqual(true, Kata.IsValidWalk(new string[] {"n","s","n","s","n","s","n","s","n","s"}), "should return true");
-        Assert.AreEqual(false, Kata.IsValidWalk(new string[] {"w","e","w","e","w","e","w","e","w","e","w","e"}), "should return false");
-        Assert.AreEqual(false, Kata.IsValidWalk(new string[] {"w"}), "should return false");
-        Assert.AreEqual(false, Kata.IsValidWalk(new string[] {"n","n","n","s","n","s","n","s","n","s"}), "should return false");
+        variabonacci = new Kata();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        variabonacci = null;
+    }
+
+    [Test]
+    public void Tests()
+    {
+        Assert.AreEqual(new double []{1,1,1,3,5,9,17,31,57,105}, variabonacci.Tribonacci(new double []{1,1,1},10));
+        Assert.AreEqual(new double []{0,0,1,1,2,4,7,13,24,44}, variabonacci.Tribonacci(new double []{0,0,1},10));
+        Assert.AreEqual(new double []{0,1,1,2,4,7,13,24,44,81}, variabonacci.Tribonacci(new double []{0,1,1},10));
     }
 }

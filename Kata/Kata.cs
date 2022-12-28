@@ -9,43 +9,27 @@ namespace Kata;
 
 public class Kata
 {
-    public static int[] CalculatePath(int[] path, string[] walk)
+    public double trib(double[] signature, int n)
     {
-        if ( walk.Length < 12 && walk.Length > 2)
-        {
-            for (int i = 0; i < walk.Length; i++)
-            {
-                switch (walk[i].ToCharArray()[0])
-                {
-                    case 'n':
-                        path[1] += 1;
-                        break;
-                    case 's':
-                        path[1] -= 1;
-                        break;
-                    case 'w':
-                        path[0] -= 1;
-                        break;
-                    case 'e':
-                        path[0] += 1;
-                        break;
-                }
-            }
-            return path;
-        }
-
-        return new[] { 11, 11 };
+        if (n == 2)
+            return signature[2];
+        else if (n == 1)
+            return signature[1];
+        else if (n == 0)
+            return signature[0];
+        else return trib(signature, n - 1) + trib(signature, n - 2) + trib(signature, n - 3);
     }
 
-    public static bool IsValidWalk(string[] walk)
+    public double[] Tribonacci(double[] s, int n)
     {
-        //                      x - y
-        int[] board = new[] { 0, 0 };
-        var finalCord = CalculatePath(board, walk);
-        if ((finalCord[0] == 0 && finalCord[1] == 0))
+        double[] result = new double[n];
+        Array.Copy(s,result, Math.Min(3,n));
+        for (int i = 3; i < n; i++)
         {
-            return true;
+            //result[i] = trib(signature,i);
+            result[i] = result[i - 1] + result[i - 2] + result[i - 3];
         }
-        else return false;
+
+        return n==0 ? new double[]{} : result;
     }
 }

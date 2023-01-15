@@ -9,27 +9,21 @@ namespace Kata;
 
 public class Kata
 {
-    public double trib(double[] signature, int n)
+    public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
     {
-        if (n == 2)
-            return signature[2];
-        else if (n == 1)
-            return signature[1];
-        else if (n == 0)
-            return signature[0];
-        else return trib(signature, n - 1) + trib(signature, n - 2) + trib(signature, n - 3);
-    }
+        var s = iterable.ToList();
+        var s_new = new List<T>();
+        
 
-    public double[] Tribonacci(double[] s, int n)
-    {
-        double[] result = new double[n];
-        Array.Copy(s,result, Math.Min(3,n));
-        for (int i = 3; i < n; i++)
+        for (int i=0; i < s.Count; i++ )
         {
-            //result[i] = trib(signature,i);
-            result[i] = result[i - 1] + result[i - 2] + result[i - 3];
+            if(i==0)
+                s_new.Add(s[i]);
+            if ((!s[i].Equals(s_new[s_new.Count - 1])) && i>0)
+                s_new.Add(s[i]);
         }
-
-        return n==0 ? new double[]{} : result;
+       
+        var result = s_new.ToList();
+        return result;
     }
 }

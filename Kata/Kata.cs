@@ -9,21 +9,27 @@ namespace Kata;
 
 public class Kata
 {
-    public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
+    public static int[] ArrayDiff(int[] a, int[] b)
     {
-        var s = iterable.ToList();
-        var s_new = new List<T>();
-        
+        var result2 = new List<int>();
+        var b2 = b.ToList();
 
-        for (int i=0; i < s.Count; i++ )
+        if (b.Length == 0)
         {
-            if(i==0)
-                s_new.Add(s[i]);
-            if ((!s[i].Equals(s_new[s_new.Count - 1])) && i>0)
-                s_new.Add(s[i]);
+            return a;
         }
-       
-        var result = s_new.ToList();
-        return result;
+
+        foreach (var item in a)
+        {
+            var temp = b2.Where(x => x == item).ToList();
+            if(temp.Count==0)
+            {
+                result2.Add(item);
+            }
+        }
+        
+        return result2.ToArray();
+        
+        //return a.Where(n => !b.Contains(n)).ToArray();
     }
 }

@@ -13,12 +13,7 @@ public class Kata
     {
         var result2 = new List<int>();
         var b2 = b.ToList();
-
-        if (b.Length == 0)
-        {
-            return a;
-        }
-
+        
         foreach (var item in a)
         {
             var temp = b2.Where(x => x == item).ToList();

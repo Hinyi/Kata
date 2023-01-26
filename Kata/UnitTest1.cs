@@ -8,13 +8,22 @@ using System;
 public class SolutionTest
 {
     [Test]
-    public void SampleTest()
+    public void TestSimple()
     {
-        Assert.AreEqual(new int[] {2},       Kata.ArrayDiff(new int[] {1, 2},    new int[] {1}));
-        Assert.AreEqual(new int[] {2, 2},    Kata.ArrayDiff(new int[] {1, 2, 2}, new int[] {1}));
-        Assert.AreEqual(new int[] {1},       Kata.ArrayDiff(new int[] {1, 2, 2}, new int[] {2}));
-        Assert.AreEqual(new int[] {1, 2, 2}, Kata.ArrayDiff(new int[] {1, 2, 2}, new int[] {}));
-        Assert.AreEqual(new int[] {},        Kata.ArrayDiff(new int[] {},        new int[] {1, 2}));
-        Assert.AreEqual(new int[] {3}, Kata.ArrayDiff(new int[] {1, 2, 3}, new int[] {1, 2}));
+        var expected = new int[] {20, 37, 21};
+
+        var actual = Kata.DeleteNth(new int[] {20, 37, 20, 21}, 1);
+  
+        CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void TestSimple2()
+    {
+        var expected = new int[] {1, 1, 3, 3, 7, 2, 2, 2};
+
+        var actual = Kata.DeleteNth(new int[] {1,1,3,3,7,2,2,2,2}, 3);
+  
+        CollectionAssert.AreEqual(expected, actual);
     }
 }

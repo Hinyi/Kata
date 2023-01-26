@@ -9,22 +9,28 @@ namespace Kata;
 
 public class Kata
 {
-    public static int[] ArrayDiff(int[] a, int[] b)
+    public static int[] DeleteNth(int[] arr, int x)
     {
-        var result2 = new List<int>();
-        var b2 = b.ToList();
-        
-        foreach (var item in a)
+        var arrayOfUnique = new List<int>();
+
+        Dictionary<int, int> freq = new Dictionary<int, int>();
+        for (int i = 0; i < arr.Count(); i++)
         {
-            var temp = b2.Where(x => x == item).ToList();
-            if(temp.Count==0)
+            if (freq.ContainsKey(arr[i]))
+                freq[arr[i]]++;
+            else freq[arr[i]] = 1;
+            
+            if (freq[arr[i]] <= x)
             {
-                result2.Add(item);
+                arrayOfUnique.Add(arr[i]);
             }
         }
+        return arrayOfUnique.ToArray();
         
-        return result2.ToArray();
-        
-        //return a.Where(n => !b.Contains(n)).ToArray();
+        // var result = new List<int>();
+        // foreach(var item in arr) {
+        //     if(result.Count(i => i == item) < x)
+        //         result.Add(item);
+        // }
     }
 }

@@ -8,22 +8,56 @@ using System;
 public class SolutionTest
 {
     [Test]
-    public void TestSimple()
+    public void TestToRoman_001()
     {
-        var expected = new int[] {20, 37, 21};
+        int input = 1;
+        string expected = "I";
 
-        var actual = Kata.DeleteNth(new int[] {20, 37, 20, 21}, 1);
-  
-        CollectionAssert.AreEqual(expected, actual);
+        string actual = RomanNumerals.ToRoman(input);
+
+        Assert.AreEqual(expected, actual);
     }
 
     [Test]
-    public void TestSimple2()
+    public void TestToRoman_002()
     {
-        var expected = new int[] {1, 1, 3, 3, 7, 2, 2, 2};
+        int input = 2;
+        string expected = "II";
 
-        var actual = Kata.DeleteNth(new int[] {1,1,3,3,7,2,2,2,2}, 3);
-  
-        CollectionAssert.AreEqual(expected, actual);
+        string actual = RomanNumerals.ToRoman(input);
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void TestFromRoman_001()
+    {
+        string input = "I";
+        int expected = 1;
+    
+        int actual = RomanNumerals.FromRoman(input);
+    
+        Assert.AreEqual(expected, actual);
+    }   
+    [Test]
+    public void TestFromRoman_003()
+    {
+        string input = "XL";
+        int expected = 40;
+    
+        int actual = RomanNumerals.FromRoman(input);
+    
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [Test]
+    public void TestFromRoman_002()
+    {
+        string input = "II";
+        int expected = 2;
+    
+        int actual = RomanNumerals.FromRoman(input);
+    
+        Assert.AreEqual(expected, actual);
     }
 }

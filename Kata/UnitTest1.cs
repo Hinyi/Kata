@@ -7,57 +7,30 @@ using System;
 [TestFixture]
 public class SolutionTest
 {
-    [Test]
-    public void TestToRoman_001()
+    private static int[][][] matrix =
     {
-        int input = 1;
-        string expected = "I";
+        new int[][] { new [] { 1 } },
+        new int[][] { new [] { 1, 3 }, new [] { 2, 5 } },
+        new int[][] { new [] { 2, 5, 3 }, new [] { 1, -2, -1 }, new [] { 1, 3, 4 } }
+    };
 
-        string actual = RomanNumerals.ToRoman(input);
+    private static int[] expected = { 1, -1, -20 };
 
-        Assert.AreEqual(expected, actual);
-    }
-
-    [Test]
-    public void TestToRoman_002()
-    {
-        int input = 2;
-        string expected = "II";
-
-        string actual = RomanNumerals.ToRoman(input);
-
-        Assert.AreEqual(expected, actual);
-    }
+    private static string[] msg = { "Determinant of a 1 x 1 matrix yields the value of the one element", "Should return 1 * 5 - 3 * 2 == -1 ", "" };
 
     [Test]
-    public void TestFromRoman_001()
+    public void SampleTests()
     {
-        string input = "I";
-        int expected = 1;
-    
-        int actual = RomanNumerals.FromRoman(input);
-    
-        Assert.AreEqual(expected, actual);
-    }   
+        Assert.AreEqual(expected[0], Matrix.Determinant(matrix[0]), msg[0]);
+    }    
     [Test]
-    public void TestFromRoman_003()
+    public void SampleTests1()
     {
-        string input = "XL";
-        int expected = 40;
-    
-        int actual = RomanNumerals.FromRoman(input);
-    
-        Assert.AreEqual(expected, actual);
-    }
-    
+        Assert.AreEqual(expected[1], Matrix.Determinant(matrix[1]), msg[1]);
+    }    
     [Test]
-    public void TestFromRoman_002()
+    public void SampleTests2()
     {
-        string input = "II";
-        int expected = 2;
-    
-        int actual = RomanNumerals.FromRoman(input);
-    
-        Assert.AreEqual(expected, actual);
+        Assert.AreEqual(expected[2], Matrix.Determinant(matrix[2]), msg[2]);
     }
 }

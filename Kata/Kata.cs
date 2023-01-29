@@ -6,58 +6,62 @@ using System.Collections.Generic;
 using System.Security;
 
 namespace Kata;
-public class RomanNumerals
-    {
-        private static string[] romanLetters = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
-        private static int[] numbers = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-        
-        public static string ToRoman(int n)
-        {
-            var romanNumber = string.Empty;
-            int i = 0;
-            while (n!=0)
-            {
-                if (n >= numbers[i])
-                {
-                    romanNumber += romanLetters[i];
-                    n -= numbers[i];
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            return romanNumber;
-        }
-        
-        //private static string[] romanLetters = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
-        public static int FromRoman(string romanNumeral)
+public class Matrix
+{
+
+    static int recursion(int[][] arr)
+    {
+        if (arr.Length == 1)
         {
-            var arabicNumber = 0;
-            var romanCharArr = (romanNumeral+ " ").ToArray() ;
-            int i = 0;
-            int currentValueOfRoman = 0;
-            
-            //MMCDCCVI
-            
-            while (romanCharArr[currentValueOfRoman] != ' ')
-            {
-                if (romanCharArr[currentValueOfRoman].ToString() == romanLetters[i])
-                {
-                    arabicNumber += numbers[i];
-                    currentValueOfRoman++;
-                }
-                else if (romanCharArr[currentValueOfRoman] + romanCharArr[currentValueOfRoman+1].ToString() == romanLetters[i])
-                {
-                    arabicNumber += numbers[i];
-                    currentValueOfRoman +=2;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            return arabicNumber;
+            return arr[0][0];
         }
+        if (arr.Length == 2)
+        {
+            return arr[0][0]*arr[1][1] - arr[1][0]*arr[0][1];
+        }
+
+        var det = 0;
+        
+        for (int i = 0; i < arr.Length; i++)
+        {
+            var a = arr;
+
+            List<List<int>> minor = new List<List<int>>();
+            int size_row = 0;
+
+            for (int j = 0; j < a.Length; j++)
+            {
+                int size_column = 0;
+                List<int> Child=new List<int>();
+                for (int k = 0; k < a.Length; k++)
+                {
+                    if(j!=i && k!=0)
+                    {
+                        Child.Add(a[size_row][size_column]);
+                    }
+                    
+                    size_column++;
+                }
+                if(Child.Count>1){minor.Add(Child);}
+                
+                size_row++;
+            }
+            int[][] arrays = minor.Select(a => a.ToArray()).ToArray();
+            if(i%2==0)
+            {
+                det += arr[i][0] * recursion(arrays);
+            }
+            else
+            {
+                det -= arr[i][0] * recursion(arrays);
+            }
+        }
+        return det;
     }
+    public static int Determinant(int[][] matrix)
+    {
+        var result = recursion(matrix);
+        return result;
+    }
+}

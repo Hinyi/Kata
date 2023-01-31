@@ -9,22 +9,21 @@ namespace Kata;
 
 public class Kata
 {
-    public static string FirstNonRepeatingLetter(string s)
+    public static int MaxSequence(int[] arr)
     {
-        var listOfString = string.Concat(s.ToLower()
-            .GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key)).ToArray();
-        if (s.Length == 0 || listOfString.Length == 0)
-        {
-            return string.Empty;
-        }
-        var position = s.ToLower().IndexOf(listOfString[0]);
-
-        return s.ToArray().GetValue(position).ToString();
+        if (arr.Length == 0)
+            return 0;
         
-        // return s.GroupBy(char.ToLower)
-        //     .Where(gr => gr.Count() == 1)
-        //     .Select(x => x.First().ToString())
-        //     .DefaultIfEmpty("")
-        //     .First();
+        int currentMax = arr[0], max = 0;
+ 
+        for (int i = 0; i < arr.Length; i++) {
+            max +=  arr[i];
+            if (max < 0)
+                max = 0;
+ 
+            else if (currentMax < max)
+                currentMax = max;
+        }
+        return currentMax;
     }
 }

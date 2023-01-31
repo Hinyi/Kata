@@ -7,61 +7,24 @@ using System.Security;
 
 namespace Kata;
 
-public class Matrix
+public class Kata
 {
-
-    static int recursion(int[][] arr)
+    public static string FirstNonRepeatingLetter(string s)
     {
-        if (arr.Length == 1)
+        var listOfString = string.Concat(s.ToLower()
+            .GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key)).ToArray();
+        if (s.Length == 0 || listOfString.Length == 0)
         {
-            return arr[0][0];
+            return string.Empty;
         }
-        if (arr.Length == 2)
-        {
-            return arr[0][0]*arr[1][1] - arr[1][0]*arr[0][1];
-        }
+        var position = s.ToLower().IndexOf(listOfString[0]);
 
-        var det = 0;
+        return s.ToArray().GetValue(position).ToString();
         
-        for (int i = 0; i < arr.Length; i++)
-        {
-            var a = arr;
-
-            List<List<int>> minor = new List<List<int>>();
-            int size_row = 0;
-
-            for (int j = 0; j < a.Length; j++)
-            {
-                int size_column = 0;
-                List<int> Child=new List<int>();
-                for (int k = 0; k < a.Length; k++)
-                {
-                    if(j!=i && k!=0)
-                    {
-                        Child.Add(a[size_row][size_column]);
-                    }
-                    
-                    size_column++;
-                }
-                if(Child.Count>1){minor.Add(Child);}
-                
-                size_row++;
-            }
-            int[][] arrays = minor.Select(a => a.ToArray()).ToArray();
-            if(i%2==0)
-            {
-                det += arr[i][0] * recursion(arrays);
-            }
-            else
-            {
-                det -= arr[i][0] * recursion(arrays);
-            }
-        }
-        return det;
-    }
-    public static int Determinant(int[][] matrix)
-    {
-        var result = recursion(matrix);
-        return result;
+        // return s.GroupBy(char.ToLower)
+        //     .Where(gr => gr.Count() == 1)
+        //     .Select(x => x.First().ToString())
+        //     .DefaultIfEmpty("")
+        //     .First();
     }
 }

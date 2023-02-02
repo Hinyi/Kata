@@ -4,79 +4,73 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security;
+using static System.Math;
 
 namespace Kata;
 
 public class Kata
 {
-    // private static List<long> numberToDigitList(long n)
-    // {
-    //     List<long> digits = new List<long>();
-    //     var charArray = n.ToString().ToArray();
-    //     foreach (var item in charArray)
-    //     {
-    //         digits.Add(long.Parse(item.ToString()));
-    //     }
-    //
-    //     return digits;
-    // }
-    // public static long NextBiggerNumber(long n)
-    // {
-    //     var size = n.ToString().ToArray().Length;
-    //     List<long> digArr = numberToDigitList(n);
-    //
-    //     if (size == 1)
-    //         return n;
-    //
-    //     int i = 0;
-    //     for (i = size-1; i > 0; i--)
-    //     {
-    //         if (digArr[i] > digArr[i - 1])
-    //             break;
-    //     }
-    //
-    //     if (i != 0)
-    //     {
-    //         for (int j = size-1; j >= i; j--)
-    //         {
-    //             if (digArr[i - 1] < digArr[j])
-    //             {
-    //                 (digArr[j], digArr[i - 1]) = (digArr[i - 1], digArr[j]);
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //     else
-    //     {
-    //         return -1;
-    //     }
-    //
-    //     long[] res = new long[size];
-    //     var ind = size - 1;
-    //     for (int j = 0; j < i; j++)
-    //         res[j] = digArr[j];
-    //     for (int j = i; j < res.Length; j++)
-    //         res[j] = digArr[ind--];
-    //
-    //     string str = string.Join("", res);
-    //     var result = Convert.ToInt64(str);
-    //     return result;
-        
-        public static long NextBiggerNumber(long n)
-        {        
-            String str = GetNumbers(n);
-            for (long i = n+1; i <= long.Parse(str); i++)
-            {
-                if(GetNumbers(n)==GetNumbers(i))
-                {
-                    return i;
-                }
-            }
-            return -1;        
-        }
-        public static string GetNumbers(long number)
+    private static List<List<int>> arrToList(int[][] arr)
+    {
+        int x = 1,y = 1;
+        List<List<int>> list = new List<List<int>>();
+        var tak = arr[x][x];
+        foreach (int[] item in arr)
         {
-            var result = string.Join("", number.ToString().ToCharArray().OrderByDescending(x => x));
-            return result;
+            foreach (int i in item)
+            {
+                list[x][y] = 1;
+                list[x][y] = i;
+                y++;
+            }
+            x++;
         }
+
+        return list;
     }
+    public static int[] Snail(int[][] array)
+    {
+        if (array[0].Length == 0)
+            return new int[] { };
+        int x=0, y = 0;
+        var size = array.Length;
+        int n = int.Parse(Pow(size,2).ToString());
+        int k = 0;
+        var arr = array;//arrToList(array);
+        List<int> result = new List<int>();
+        while (k < n)
+        {
+            for (int i = x; i < x+size; i++)
+            {
+                result.Add(arr[y][i]);
+                k++;
+            }
+            size--;
+            y++;
+            for (int i = y; i < y+size; i++)
+            {
+                result.Add(arr[i][x+size]);
+                // result[k] = arr[x][y];
+                k++;
+            }
+            for (int i = x + size -1; i >= x; i--)
+            {
+                result.Add(arr[y+size-1][i]);
+                k++;
+            }
+
+            size--;
+            
+            for (int i = y+size-1; i >= y; i--)
+            {
+                result.Add(arr[i][x]);
+                k++;
+            }
+
+            x++;
+        }
+
+        int[] output = result.ToArray();
+        return output;
+    }
+}

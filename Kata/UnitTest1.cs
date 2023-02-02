@@ -6,47 +6,46 @@ using NUnit.Framework;
 using System;
 
 
-[TestFixture]
-public class SolutionTest
-{
+
     [TestFixture]
     public class KataTest
     {
         
         [Test]
-        public void SmallNumbers()
+        public void SnailTest1()
         {
-            Assert.AreEqual(21, Kata.NextBiggerNumber(12));
+            int[][] array = new int[3][]
+            {
+                new []{1, 2, 3},
+                new []{4, 5, 6},
+                new []{7, 8, 9}
+            };
+            var r = new[] { 1, 2, 3, 6, 9, 8, 7, 4, 5 };
+            Test(array, r);
         }        
         [Test]
-        public void SmallNumbers2()
+        public void SnailTest2()
         {
-            Assert.AreEqual(531, Kata.NextBiggerNumber(513));
-        }        
-        [Test]
-        public void SmallNumbers3()
+            int[][] array = new int[][]
+            {
+                new int[]{},
+                new int[]{},
+                new int[]{}
+            };
+            var r = new int[] {};
+            Test(array, r);
+        }
+
+        public string Int2dToString(int[][] a)
         {
-            Assert.AreEqual(2071, Kata.NextBiggerNumber(2017));
-        }        
-        [Test]
-        public void SmallNumbers4()
+            return $"[{string.Join("\n", a.Select(row => $"[{string.Join(",", row)}]"))}]";
+        }
+
+        public void Test(int[][] array, int[] result)
         {
-            Assert.AreEqual(441, Kata.NextBiggerNumber(414));
-        }        
-        [Test]
-        public void SmallNumbers5()
-        {
-            Assert.AreEqual(414, Kata.NextBiggerNumber(144));   
-        }        
-        [Test]
-        public void SmallNumbers6()
-        {
-            Assert.AreEqual(123456798, Kata.NextBiggerNumber(123456789));
-        }        
-        [Test]
-        public void SmallNumbers7()
-        {
-            Assert.AreEqual(169692891, Kata.NextBiggerNumber(169692819));
+            var text = $"{Int2dToString(array)}\nshould be sorted to\n[{string.Join(",", result)}]\n";
+            Console.WriteLine(text);
+            Assert.AreEqual(result, Kata.Snail(array));
         }
     }
-}
+

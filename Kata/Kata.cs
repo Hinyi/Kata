@@ -8,22 +8,10 @@ using static System.Math;
 
 namespace Kata;
 
-public class Parentheses
+public class Kata
 {
-    public static bool ValidParentheses(string input)
+    public static int DuplicateCount(string str)
     {
-        var inputArr = input.ToCharArray();
-        var counter = 0;
-        foreach (var i in inputArr)
-        {
-            if (i == '(')
-                counter++;
-            if (i == ')')
-                counter--;
-            if(counter<0)
-                return false;
-                
-        }
-        return counter == 0;
+        return str.ToLower().GroupBy(x => x).Where(x => x.Count() > 1).Count();
     }
 }

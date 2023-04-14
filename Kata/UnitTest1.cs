@@ -6,16 +6,17 @@ using NUnit.Framework;
 using System;
 
 [TestFixture]
-public class KataTest
+public class SolutionTest
 {
-    [Test]
-    public void KataTests()
+    [Test, Description("test")]
+    public void testTest()
     {
-        Assert.AreEqual(0, Kata.DuplicateCount(""));
-        Assert.AreEqual(0, Kata.DuplicateCount("abcde"));
-        Assert.AreEqual(2, Kata.DuplicateCount("aabbcde"));
-        Assert.AreEqual(2, Kata.DuplicateCount("aabBcde"), "should ignore case");
-        Assert.AreEqual(1, Kata.DuplicateCount("Indivisibility"));
-        Assert.AreEqual(2, Kata.DuplicateCount("Indivisibilities"), "characters may not be adjacent");
+        Assert.AreEqual("grfg", Kata.Rot13("test"), String.Format("Input: test, Expected Output: grfg, Actual Output: {0}", Kata.Rot13("test")));
+    }
+    
+    [Test, Description("Test")]
+    public void TestTest()
+    {
+        Assert.AreEqual("Grfg", Kata.Rot13("Test"), String.Format("Input: Test, Expected Output: Grfg, Actual Output: {0}", Kata.Rot13("Test")));
     }
 }
